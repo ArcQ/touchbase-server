@@ -1,0 +1,50 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.kf.touchbase",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "touchbase",
+    "packageName": "com.kf.touchbase",
+    "packageFolder": "com/kf/touchbase",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "caffeine",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "messageBroker": false,
+    "buildTool": "maven",
+    "jwtSecretKey": "ODFlNTYyYWU5ZjI3Zjg3NmM5YzFhMjM3ODU1NjhhNmI4N2M0MTBiYjIwMTNhMjMyOTgwOTEyZGZmYzliZjYyYThiYzk4NTU4MDQ4NmU3Njg4NzVhMjE0YzNmOWRkY2ZkMTYxODUxMmRjOGFhZmUyMGEyOTRjYmE1OWVjZDNjOWQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "flatly",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1600231437943,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-micronaut",
+        "version": "0.5.0"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "fr"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-micronaut",
+        "version": "0.5.0"
+      }
+    ]
+  }
+}
