@@ -1,0 +1,34 @@
+{
+  "name": "Mission",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "scoreReward",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "missonType",
+      "fieldType": "MissionType",
+      "fieldValues": "PERIODIC,WEEKLY,ONE_TIME"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200918174436",
+  "entityTableName": "mission",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

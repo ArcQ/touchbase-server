@@ -7,6 +7,11 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "base": "Base",
+        "chat": "Chat",
+        "mission": "Mission",
+        "baseMember": "Base Member",
+        "baseJoin": "Base Join",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

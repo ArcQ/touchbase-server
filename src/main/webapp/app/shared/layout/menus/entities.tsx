@@ -13,6 +13,21 @@ export const EntitiesMenu = props => (
     id="entity-menu"
     style={{ maxHeight: '80vh', overflow: 'auto' }}
   >
+    <MenuItem icon="asterisk" to="/base">
+      <Translate contentKey="global.menu.entities.base" />
+    </MenuItem>
+    <MenuItem icon="asterisk" to="/chat">
+      <Translate contentKey="global.menu.entities.chat" />
+    </MenuItem>
+    <MenuItem icon="asterisk" to="/mission">
+      <Translate contentKey="global.menu.entities.mission" />
+    </MenuItem>
+    <MenuItem icon="asterisk" to="/base-member">
+      <Translate contentKey="global.menu.entities.baseMember" />
+    </MenuItem>
+    <MenuItem icon="asterisk" to="/base-join">
+      <Translate contentKey="global.menu.entities.baseJoin" />
+    </MenuItem>
     {/* jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here */}
   </NavDropdown>
 );

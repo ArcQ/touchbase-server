@@ -1,0 +1,9 @@
+{
+  "touchbaseApp": {
+    "BaseJoinAction": {
+      "null": "",
+      "REQUEST": "REQUEST",
+      "INVITE": "INVITE"
+    }
+  }
+}

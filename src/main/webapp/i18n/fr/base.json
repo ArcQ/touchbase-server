@@ -1,0 +1,29 @@
+{
+  "touchbaseApp": {
+    "base": {
+      "home": {
+        "title": "Bases",
+        "createLabel": "Créer un nouveau Base",
+        "createOrEditLabel": "Créer ou éditer un Base",
+        "notFound": "Aucun Base trouvé"
+      },
+      "created": "Un nouveau Base a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Base avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Base avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Base {{ id }} ?"
+      },
+      "detail": {
+        "title": "Base"
+      },
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "name": "Name",
+      "score": "Score",
+      "imageUrl": "Image Url",
+      "isActive": "Is Active",
+      "chats": "Chats",
+      "members": "Members"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "touchbaseApp": {
+    "baseJoin": {
+      "home": {
+        "title": "Base Joins",
+        "createLabel": "Create a new Base Join",
+        "createOrEditLabel": "Create or edit a Base Join",
+        "notFound": "No Base Joins found"
+      },
+      "created": "A new Base Join is created with identifier {{ param }}",
+      "updated": "A Base Join is updated with identifier {{ param }}",
+      "deleted": "A Base Join is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Base Join {{ id }}?"
+      },
+      "detail": {
+        "title": "Base Join"
+      },
+      "baseJoin": "Base Join",
+      "base": "Base"
+    }
+  }
+}

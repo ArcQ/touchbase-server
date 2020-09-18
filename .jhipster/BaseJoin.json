@@ -1,0 +1,31 @@
+{
+  "name": "BaseJoin",
+  "fields": [
+    {
+      "fieldName": "baseJoin",
+      "fieldType": "BaseJoinAction",
+      "fieldValues": "REQUEST,INVITE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "base",
+      "otherEntityRelationshipName": "baseJoin",
+      "relationshipName": "base",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200918174636",
+  "entityTableName": "base_join",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

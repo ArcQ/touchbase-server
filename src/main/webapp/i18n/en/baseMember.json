@@ -1,0 +1,26 @@
+{
+  "touchbaseApp": {
+    "baseMember": {
+      "home": {
+        "title": "Base Members",
+        "createLabel": "Create a new Base Member",
+        "createOrEditLabel": "Create or edit a Base Member",
+        "notFound": "No Base Members found"
+      },
+      "created": "A new Base Member is created with identifier {{ param }}",
+      "updated": "A Base Member is updated with identifier {{ param }}",
+      "deleted": "A Base Member is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Base Member {{ id }}?"
+      },
+      "detail": {
+        "title": "Base Member"
+      },
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "role": "Role",
+      "member": "Member",
+      "base": "Base"
+    }
+  }
+}

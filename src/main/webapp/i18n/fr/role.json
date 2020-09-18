@@ -1,0 +1,9 @@
+{
+  "touchbaseApp": {
+    "Role": {
+      "null": "",
+      "MEMBER": "MEMBER",
+      "ADMIN": "ADMIN"
+    }
+  }
+}

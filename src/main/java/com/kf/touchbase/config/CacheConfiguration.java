@@ -46,6 +46,15 @@ public class CacheConfiguration {
         createCache(cm, com.kf.touchbase.domain.User.class.getName());
         createCache(cm, com.kf.touchbase.domain.Authority.class.getName());
         createCache(cm, com.kf.touchbase.domain.User.class.getName() + ".authorities");
+        createCache(cm, com.kf.touchbase.domain.Base.class.getName());
+        createCache(cm, com.kf.touchbase.domain.Base.class.getName() + ".chats");
+        createCache(cm, com.kf.touchbase.domain.Base.class.getName() + ".members");
+        createCache(cm, com.kf.touchbase.domain.Chat.class.getName());
+        createCache(cm, com.kf.touchbase.domain.Mission.class.getName());
+        createCache(cm, com.kf.touchbase.domain.BaseMember.class.getName());
+        createCache(cm, com.kf.touchbase.domain.BaseMember.class.getName() + ".bases");
+        createCache(cm, com.kf.touchbase.domain.BaseMember.class.getName() + ".members");
+        createCache(cm, com.kf.touchbase.domain.BaseJoin.class.getName());
         // jhipster-needle-caffeine-add-entry
     }
 

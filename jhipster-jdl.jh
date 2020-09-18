@@ -1,0 +1,67 @@
+entity Base {
+	createdAt ZonedDateTime,
+    updatedAt ZonedDateTime,
+
+    name String required,
+    score Double,
+    imageUrl String required,
+    isActive Boolean
+}
+
+entity Chat {
+	createdAt ZonedDateTime,
+    updatedAt ZonedDateTime,
+	chatpiChatId String,
+}
+
+entity Mission {
+	name String,
+	description String,
+	scoreReward String,
+	missonType MissionType
+}
+
+enum MissionType {
+    PERIODIC, WEEKLY, ONE_TIME
+}
+
+
+entity BaseMember {
+	createdAt ZonedDateTime,
+    updatedAt ZonedDateTime,
+    role Role
+}
+
+enum Role {
+	MEMBER, ADMIN
+}
+
+entity BaseJoin {
+	baseJoin BaseJoinAction
+}
+
+enum BaseJoinAction {
+    REQUEST, INVITE
+}
+
+relationship OneToMany {
+	Base{chats} to Chat{base}
+}
+
+relationship OneToMany {
+	Base{members} to BaseMember{Base}
+}
+
+relationship ManyToOne {
+    BaseMember{member} to User
+}
+
+relationship OneToOne {
+	BaseJoin{base} to Base
+}
+
+// Set pagination options
+paginate Base with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
