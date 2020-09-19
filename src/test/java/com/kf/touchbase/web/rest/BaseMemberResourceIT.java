@@ -43,11 +43,11 @@ import com.kf.touchbase.domain.enumeration.Role;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseMemberResourceIT {
 
-    private static final ZonedDateTime DEFAULT_CREATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_LAST_MODIFIED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_LAST_MODIFIED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final Role DEFAULT_ROLE = Role.MEMBER;
     private static final Role UPDATED_ROLE = Role.ADMIN;
@@ -80,8 +80,8 @@ public class BaseMemberResourceIT {
      */
     public static BaseMember createEntity() {
         BaseMember baseMember = new BaseMember()
-            .createdAt(DEFAULT_CREATED_AT)
-            .updatedAt(DEFAULT_UPDATED_AT)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE)
             .role(DEFAULT_ROLE);
         return baseMember;
     }
@@ -103,8 +103,8 @@ public class BaseMemberResourceIT {
         assertThat(baseMemberList).hasSize(databaseSizeBeforeCreate + 1);
         BaseMember testBaseMember = baseMemberList.get(baseMemberList.size() - 1);
 
-        assertThat(testBaseMember.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testBaseMember.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testBaseMember.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBaseMember.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testBaseMember.getRole()).isEqualTo(DEFAULT_ROLE);
     }
 
@@ -139,8 +139,8 @@ public class BaseMemberResourceIT {
         BaseMemberDTO testBaseMember = baseMembers.get(0);
 
 
-        assertThat(testBaseMember.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testBaseMember.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testBaseMember.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBaseMember.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testBaseMember.getRole()).isEqualTo(DEFAULT_ROLE);
     }
 
@@ -153,8 +153,8 @@ public class BaseMemberResourceIT {
         BaseMemberDTO testBaseMember = client.retrieve(HttpRequest.GET("/api/base-members/" + baseMember.getId()), BaseMemberDTO.class).blockingFirst();
 
 
-        assertThat(testBaseMember.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testBaseMember.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testBaseMember.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBaseMember.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testBaseMember.getRole()).isEqualTo(DEFAULT_ROLE);
     }
 
@@ -179,8 +179,8 @@ public class BaseMemberResourceIT {
         BaseMember updatedBaseMember = baseMemberRepository.findById(baseMember.getId()).get();
 
         updatedBaseMember
-            .createdAt(UPDATED_CREATED_AT)
-            .updatedAt(UPDATED_UPDATED_AT)
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
             .role(UPDATED_ROLE);
         BaseMemberDTO updatedBaseMemberDTO = baseMemberMapper.toDto(updatedBaseMember);
 
@@ -195,8 +195,8 @@ public class BaseMemberResourceIT {
         assertThat(baseMemberList).hasSize(databaseSizeBeforeUpdate);
         BaseMember testBaseMember = baseMemberList.get(baseMemberList.size() - 1);
 
-        assertThat(testBaseMember.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
-        assertThat(testBaseMember.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testBaseMember.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testBaseMember.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
         assertThat(testBaseMember.getRole()).isEqualTo(UPDATED_ROLE);
     }
 

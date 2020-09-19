@@ -14,7 +14,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "missonType",
+      "fieldName": "missionType",
       "fieldType": "MissionType",
       "fieldValues": "PERIODIC,WEEKLY,ONE_TIME"
     }

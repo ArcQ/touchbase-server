@@ -26,17 +26,19 @@ export const BaseDetail = (props: IBaseDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="createdAt">
-              <Translate contentKey="touchbaseApp.base.createdAt">Created At</Translate>
+            <span id="createdDate">
+              <Translate contentKey="touchbaseApp.base.createdDate">Created Date</Translate>
             </span>
           </dt>
-          <dd>{baseEntity.createdAt ? <TextFormat value={baseEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dd>{baseEntity.createdDate ? <TextFormat value={baseEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
           <dt>
-            <span id="updatedAt">
-              <Translate contentKey="touchbaseApp.base.updatedAt">Updated At</Translate>
+            <span id="lastModifiedDate">
+              <Translate contentKey="touchbaseApp.base.lastModifiedDate">Last Modified Date</Translate>
             </span>
           </dt>
-          <dd>{baseEntity.updatedAt ? <TextFormat value={baseEntity.updatedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dd>
+            {baseEntity.lastModifiedDate ? <TextFormat value={baseEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} /> : null}
+          </dd>
           <dt>
             <span id="name">
               <Translate contentKey="touchbaseApp.base.name">Name</Translate>

@@ -2,8 +2,8 @@ import { Moment } from 'moment';
 
 export interface IChat {
   id?: number;
-  createdAt?: string;
-  updatedAt?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
   chatpiChatId?: string;
   baseId?: number;
 }

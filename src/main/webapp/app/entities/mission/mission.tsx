@@ -46,7 +46,7 @@ export const Mission = (props: IMissionProps) => {
                   <Translate contentKey="touchbaseApp.mission.scoreReward">Score Reward</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="touchbaseApp.mission.missonType">Misson Type</Translate>
+                  <Translate contentKey="touchbaseApp.mission.missionType">Mission Type</Translate>
                 </th>
                 <th />
               </tr>
@@ -63,7 +63,7 @@ export const Mission = (props: IMissionProps) => {
                   <td>{mission.description}</td>
                   <td>{mission.scoreReward}</td>
                   <td>
-                    <Translate contentKey={`touchbaseApp.MissionType.${mission.missonType}`} />
+                    <Translate contentKey={`touchbaseApp.MissionType.${mission.missionType}`} />
                   </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

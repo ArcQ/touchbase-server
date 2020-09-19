@@ -42,11 +42,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseResourceIT {
 
-    private static final ZonedDateTime DEFAULT_CREATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_LAST_MODIFIED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_LAST_MODIFIED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
@@ -88,8 +88,8 @@ public class BaseResourceIT {
      */
     public static Base createEntity() {
         Base base = new Base()
-            .createdAt(DEFAULT_CREATED_AT)
-            .updatedAt(DEFAULT_UPDATED_AT)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE)
             .name(DEFAULT_NAME)
             .score(DEFAULT_SCORE)
             .imageUrl(DEFAULT_IMAGE_URL)
@@ -114,8 +114,8 @@ public class BaseResourceIT {
         assertThat(baseList).hasSize(databaseSizeBeforeCreate + 1);
         Base testBase = baseList.get(baseList.size() - 1);
 
-        assertThat(testBase.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testBase.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testBase.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBase.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testBase.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testBase.getScore()).isEqualTo(DEFAULT_SCORE);
         assertThat(testBase.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
@@ -191,8 +191,8 @@ public class BaseResourceIT {
         BaseDTO testBase = bases.get(0);
 
 
-        assertThat(testBase.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testBase.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testBase.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBase.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testBase.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testBase.getScore()).isEqualTo(DEFAULT_SCORE);
         assertThat(testBase.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
@@ -208,8 +208,8 @@ public class BaseResourceIT {
         BaseDTO testBase = client.retrieve(HttpRequest.GET("/api/bases/" + base.getId()), BaseDTO.class).blockingFirst();
 
 
-        assertThat(testBase.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testBase.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testBase.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBase.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testBase.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testBase.getScore()).isEqualTo(DEFAULT_SCORE);
         assertThat(testBase.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
@@ -237,8 +237,8 @@ public class BaseResourceIT {
         Base updatedBase = baseRepository.findById(base.getId()).get();
 
         updatedBase
-            .createdAt(UPDATED_CREATED_AT)
-            .updatedAt(UPDATED_UPDATED_AT)
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
             .name(UPDATED_NAME)
             .score(UPDATED_SCORE)
             .imageUrl(UPDATED_IMAGE_URL)
@@ -256,8 +256,8 @@ public class BaseResourceIT {
         assertThat(baseList).hasSize(databaseSizeBeforeUpdate);
         Base testBase = baseList.get(baseList.size() - 1);
 
-        assertThat(testBase.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
-        assertThat(testBase.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testBase.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testBase.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
         assertThat(testBase.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testBase.getScore()).isEqualTo(UPDATED_SCORE);
         assertThat(testBase.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);

@@ -2,11 +2,11 @@
   "name": "BaseMember",
   "fields": [
     {
-      "fieldName": "createdAt",
+      "fieldName": "createdDate",
       "fieldType": "ZonedDateTime"
     },
     {
-      "fieldName": "updatedAt",
+      "fieldName": "lastModifiedDate",
       "fieldType": "ZonedDateTime"
     },
     {
@@ -28,13 +28,6 @@
       "otherEntityName": "user",
       "otherEntityRelationshipName": "baseMember",
       "relationshipName": "member",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "base",
-      "otherEntityRelationshipName": "members",
-      "relationshipName": "base",
       "otherEntityField": "id"
     }
   ],

@@ -48,8 +48,8 @@ public class MissionResourceIT {
     private static final String DEFAULT_SCORE_REWARD = "AAAAAAAAAA";
     private static final String UPDATED_SCORE_REWARD = "BBBBBBBBBB";
 
-    private static final MissionType DEFAULT_MISSON_TYPE = MissionType.PERIODIC;
-    private static final MissionType UPDATED_MISSON_TYPE = MissionType.WEEKLY;
+    private static final MissionType DEFAULT_MISSION_TYPE = MissionType.PERIODIC;
+    private static final MissionType UPDATED_MISSION_TYPE = MissionType.WEEKLY;
 
     @Inject
     private MissionMapper missionMapper;
@@ -82,7 +82,7 @@ public class MissionResourceIT {
             .name(DEFAULT_NAME)
             .description(DEFAULT_DESCRIPTION)
             .scoreReward(DEFAULT_SCORE_REWARD)
-            .missonType(DEFAULT_MISSON_TYPE);
+            .missionType(DEFAULT_MISSION_TYPE);
         return mission;
     }
 
@@ -106,7 +106,7 @@ public class MissionResourceIT {
         assertThat(testMission.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMission.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testMission.getScoreReward()).isEqualTo(DEFAULT_SCORE_REWARD);
-        assertThat(testMission.getMissonType()).isEqualTo(DEFAULT_MISSON_TYPE);
+        assertThat(testMission.getMissionType()).isEqualTo(DEFAULT_MISSION_TYPE);
     }
 
     @Test
@@ -143,7 +143,7 @@ public class MissionResourceIT {
         assertThat(testMission.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMission.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testMission.getScoreReward()).isEqualTo(DEFAULT_SCORE_REWARD);
-        assertThat(testMission.getMissonType()).isEqualTo(DEFAULT_MISSON_TYPE);
+        assertThat(testMission.getMissionType()).isEqualTo(DEFAULT_MISSION_TYPE);
     }
 
     @Test
@@ -158,7 +158,7 @@ public class MissionResourceIT {
         assertThat(testMission.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMission.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testMission.getScoreReward()).isEqualTo(DEFAULT_SCORE_REWARD);
-        assertThat(testMission.getMissonType()).isEqualTo(DEFAULT_MISSON_TYPE);
+        assertThat(testMission.getMissionType()).isEqualTo(DEFAULT_MISSION_TYPE);
     }
 
     @Test
@@ -185,7 +185,7 @@ public class MissionResourceIT {
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
             .scoreReward(UPDATED_SCORE_REWARD)
-            .missonType(UPDATED_MISSON_TYPE);
+            .missionType(UPDATED_MISSION_TYPE);
         MissionDTO updatedMissionDTO = missionMapper.toDto(updatedMission);
 
         @SuppressWarnings("unchecked")
@@ -202,7 +202,7 @@ public class MissionResourceIT {
         assertThat(testMission.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testMission.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testMission.getScoreReward()).isEqualTo(UPDATED_SCORE_REWARD);
-        assertThat(testMission.getMissonType()).isEqualTo(UPDATED_MISSON_TYPE);
+        assertThat(testMission.getMissionType()).isEqualTo(UPDATED_MISSION_TYPE);
     }
 
     @Test

@@ -15,8 +15,6 @@ public interface BaseMapper extends EntityMapper<BaseDTO, Base> {
 
     @Mapping(target = "chats", ignore = true)
     @Mapping(target = "removeChats", ignore = true)
-    @Mapping(target = "members", ignore = true)
-    @Mapping(target = "removeMembers", ignore = true)
     Base toEntity(BaseDTO baseDTO);
 
     default Base fromId(Long id) {

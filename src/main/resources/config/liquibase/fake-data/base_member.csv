@@ -1,4 +1,4 @@
-id;created_at;updated_at;role
+id;created_date;last_modified_date;role
 1;2020-09-18T01:24:34;2020-09-17T21:59:56;MEMBER
 2;2020-09-18T03:31:07;2020-09-17T23:12:51;ADMIN
 3;2020-09-18T04:43:08;2020-09-18T08:55:04;MEMBER

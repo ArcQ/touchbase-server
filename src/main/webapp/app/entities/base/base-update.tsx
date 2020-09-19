@@ -36,8 +36,8 @@ export const BaseUpdate = (props: IBaseUpdateProps) => {
   }, [props.updateSuccess]);
 
   const saveEntity = (event, errors, values) => {
-    values.createdAt = convertDateTimeToServer(values.createdAt);
-    values.updatedAt = convertDateTimeToServer(values.updatedAt);
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.lastModifiedDate = convertDateTimeToServer(values.lastModifiedDate);
 
     if (errors.length === 0) {
       const entity = {
@@ -77,29 +77,29 @@ export const BaseUpdate = (props: IBaseUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="createdAtLabel" for="base-createdAt">
-                  <Translate contentKey="touchbaseApp.base.createdAt">Created At</Translate>
+                <Label id="createdDateLabel" for="base-createdDate">
+                  <Translate contentKey="touchbaseApp.base.createdDate">Created Date</Translate>
                 </Label>
                 <AvInput
-                  id="base-createdAt"
+                  id="base-createdDate"
                   type="datetime-local"
                   className="form-control"
-                  name="createdAt"
+                  name="createdDate"
                   placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseEntity.createdAt)}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseEntity.createdDate)}
                 />
               </AvGroup>
               <AvGroup>
-                <Label id="updatedAtLabel" for="base-updatedAt">
-                  <Translate contentKey="touchbaseApp.base.updatedAt">Updated At</Translate>
+                <Label id="lastModifiedDateLabel" for="base-lastModifiedDate">
+                  <Translate contentKey="touchbaseApp.base.lastModifiedDate">Last Modified Date</Translate>
                 </Label>
                 <AvInput
-                  id="base-updatedAt"
+                  id="base-lastModifiedDate"
                   type="datetime-local"
                   className="form-control"
-                  name="updatedAt"
+                  name="lastModifiedDate"
                   placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseEntity.updatedAt)}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseEntity.lastModifiedDate)}
                 />
               </AvGroup>
               <AvGroup>

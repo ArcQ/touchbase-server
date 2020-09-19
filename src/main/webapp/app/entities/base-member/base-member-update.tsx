@@ -47,8 +47,8 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
   }, [props.updateSuccess]);
 
   const saveEntity = (event, errors, values) => {
-    values.createdAt = convertDateTimeToServer(values.createdAt);
-    values.updatedAt = convertDateTimeToServer(values.updatedAt);
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.lastModifiedDate = convertDateTimeToServer(values.lastModifiedDate);
 
     if (errors.length === 0) {
       const entity = {
@@ -88,29 +88,29 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="createdAtLabel" for="base-member-createdAt">
-                  <Translate contentKey="touchbaseApp.baseMember.createdAt">Created At</Translate>
+                <Label id="createdDateLabel" for="base-member-createdDate">
+                  <Translate contentKey="touchbaseApp.baseMember.createdDate">Created Date</Translate>
                 </Label>
                 <AvInput
-                  id="base-member-createdAt"
+                  id="base-member-createdDate"
                   type="datetime-local"
                   className="form-control"
-                  name="createdAt"
+                  name="createdDate"
                   placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseMemberEntity.createdAt)}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseMemberEntity.createdDate)}
                 />
               </AvGroup>
               <AvGroup>
-                <Label id="updatedAtLabel" for="base-member-updatedAt">
-                  <Translate contentKey="touchbaseApp.baseMember.updatedAt">Updated At</Translate>
+                <Label id="lastModifiedDateLabel" for="base-member-lastModifiedDate">
+                  <Translate contentKey="touchbaseApp.baseMember.lastModifiedDate">Last Modified Date</Translate>
                 </Label>
                 <AvInput
-                  id="base-member-updatedAt"
+                  id="base-member-lastModifiedDate"
                   type="datetime-local"
                   className="form-control"
-                  name="updatedAt"
+                  name="lastModifiedDate"
                   placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseMemberEntity.updatedAt)}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.baseMemberEntity.lastModifiedDate)}
                 />
               </AvGroup>
               <AvGroup>
@@ -151,21 +151,6 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
                   <option value="" key="0" />
                   {users
                     ? users.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
-              </AvGroup>
-              <AvGroup>
-                <Label for="base-member-base">
-                  <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
-                </Label>
-                <AvInput id="base-member-base" type="select" className="form-control" name="baseId">
-                  <option value="" key="0" />
-                  {bases
-                    ? bases.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
                           {otherEntity.id}
                         </option>

@@ -7,7 +7,7 @@
         Added the constraints for entity BaseMember.
     -->
     <changeSet id="20200918174536-2" author="jhipster">
-
+        
         <addForeignKeyConstraint baseColumnNames="base_id"
                                  baseTableName="base_member"
                                  constraintName="fk_base_member_base_id"

@@ -16,8 +16,8 @@
       "detail": {
         "title": "Chat"
       },
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
       "chatpiChatId": "Chatpi Chat Id",
       "base": "Base"
     }

@@ -102,11 +102,12 @@ export const Base = (props: IBaseProps) => {
                   <th className="hand" onClick={sort('id')}>
                     <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('createdAt')}>
-                    <Translate contentKey="touchbaseApp.base.createdAt">Created At</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={sort('createdDate')}>
+                    <Translate contentKey="touchbaseApp.base.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('updatedAt')}>
-                    <Translate contentKey="touchbaseApp.base.updatedAt">Updated At</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={sort('lastModifiedDate')}>
+                    <Translate contentKey="touchbaseApp.base.lastModifiedDate">Last Modified Date</Translate>{' '}
+                    <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={sort('name')}>
                     <Translate contentKey="touchbaseApp.base.name">Name</Translate> <FontAwesomeIcon icon="sort" />
@@ -131,8 +132,10 @@ export const Base = (props: IBaseProps) => {
                         {base.id}
                       </Button>
                     </td>
-                    <td>{base.createdAt ? <TextFormat type="date" value={base.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
-                    <td>{base.updatedAt ? <TextFormat type="date" value={base.updatedAt} format={APP_DATE_FORMAT} /> : null}</td>
+                    <td>{base.createdDate ? <TextFormat type="date" value={base.createdDate} format={APP_DATE_FORMAT} /> : null}</td>
+                    <td>
+                      {base.lastModifiedDate ? <TextFormat type="date" value={base.lastModifiedDate} format={APP_DATE_FORMAT} /> : null}
+                    </td>
                     <td>{base.name}</td>
                     <td>{base.score}</td>
                     <td>{base.imageUrl}</td>

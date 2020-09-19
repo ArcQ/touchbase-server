@@ -1,11 +1,10 @@
 package com.kf.touchbase.service.dto;
 
-import com.kf.touchbase.domain.enumeration.Role;
 import io.micronaut.core.annotation.Introspected;
-
-import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.io.Serializable;
 import java.util.Objects;
+import com.kf.touchbase.domain.enumeration.Role;
 
 /**
  * A DTO for the {@link com.kf.touchbase.domain.BaseMember} entity.
@@ -15,9 +14,9 @@ public class BaseMemberDTO implements Serializable {
 
     private Long id;
 
-    private ZonedDateTime createdAt;
+    private ZonedDateTime createdDate;
 
-    private ZonedDateTime updatedAt;
+    private ZonedDateTime lastModifiedDate;
 
     private Role role;
 
@@ -34,20 +33,20 @@ public class BaseMemberDTO implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Role getRole() {
@@ -99,12 +98,11 @@ public class BaseMemberDTO implements Serializable {
     public String toString() {
         return "BaseMemberDTO{" +
             "id=" + getId() +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", role='" + getRole() + "'" +
             ", baseId=" + getBaseId() +
             ", memberId=" + getMemberId() +
-            ", baseId=" + getBaseId() +
             "}";
     }
 }

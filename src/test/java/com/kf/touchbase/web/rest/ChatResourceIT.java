@@ -42,11 +42,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ChatResourceIT {
 
-    private static final ZonedDateTime DEFAULT_CREATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_LAST_MODIFIED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_LAST_MODIFIED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final String DEFAULT_CHATPI_CHAT_ID = "AAAAAAAAAA";
     private static final String UPDATED_CHATPI_CHAT_ID = "BBBBBBBBBB";
@@ -79,8 +79,8 @@ public class ChatResourceIT {
      */
     public static Chat createEntity() {
         Chat chat = new Chat()
-            .createdAt(DEFAULT_CREATED_AT)
-            .updatedAt(DEFAULT_UPDATED_AT)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE)
             .chatpiChatId(DEFAULT_CHATPI_CHAT_ID);
         return chat;
     }
@@ -102,8 +102,8 @@ public class ChatResourceIT {
         assertThat(chatList).hasSize(databaseSizeBeforeCreate + 1);
         Chat testChat = chatList.get(chatList.size() - 1);
 
-        assertThat(testChat.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testChat.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testChat.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testChat.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testChat.getChatpiChatId()).isEqualTo(DEFAULT_CHATPI_CHAT_ID);
     }
 
@@ -138,8 +138,8 @@ public class ChatResourceIT {
         ChatDTO testChat = chats.get(0);
 
 
-        assertThat(testChat.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testChat.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testChat.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testChat.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testChat.getChatpiChatId()).isEqualTo(DEFAULT_CHATPI_CHAT_ID);
     }
 
@@ -152,8 +152,8 @@ public class ChatResourceIT {
         ChatDTO testChat = client.retrieve(HttpRequest.GET("/api/chats/" + chat.getId()), ChatDTO.class).blockingFirst();
 
 
-        assertThat(testChat.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testChat.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testChat.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testChat.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
         assertThat(testChat.getChatpiChatId()).isEqualTo(DEFAULT_CHATPI_CHAT_ID);
     }
 
@@ -178,8 +178,8 @@ public class ChatResourceIT {
         Chat updatedChat = chatRepository.findById(chat.getId()).get();
 
         updatedChat
-            .createdAt(UPDATED_CREATED_AT)
-            .updatedAt(UPDATED_UPDATED_AT)
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
             .chatpiChatId(UPDATED_CHATPI_CHAT_ID);
         ChatDTO updatedChatDTO = chatMapper.toDto(updatedChat);
 
@@ -194,8 +194,8 @@ public class ChatResourceIT {
         assertThat(chatList).hasSize(databaseSizeBeforeUpdate);
         Chat testChat = chatList.get(chatList.size() - 1);
 
-        assertThat(testChat.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
-        assertThat(testChat.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testChat.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testChat.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
         assertThat(testChat.getChatpiChatId()).isEqualTo(UPDATED_CHATPI_CHAT_ID);
     }
 

@@ -2,11 +2,11 @@
   "name": "Chat",
   "fields": [
     {
-      "fieldName": "createdAt",
+      "fieldName": "createdDate",
       "fieldType": "ZonedDateTime"
     },
     {
-      "fieldName": "updatedAt",
+      "fieldName": "lastModifiedDate",
       "fieldType": "ZonedDateTime"
     },
     {

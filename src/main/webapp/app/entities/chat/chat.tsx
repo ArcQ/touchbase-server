@@ -37,10 +37,10 @@ export const Chat = (props: IChatProps) => {
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="touchbaseApp.chat.createdAt">Created At</Translate>
+                  <Translate contentKey="touchbaseApp.chat.createdDate">Created Date</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="touchbaseApp.chat.updatedAt">Updated At</Translate>
+                  <Translate contentKey="touchbaseApp.chat.lastModifiedDate">Last Modified Date</Translate>
                 </th>
                 <th>
                   <Translate contentKey="touchbaseApp.chat.chatpiChatId">Chatpi Chat Id</Translate>
@@ -59,8 +59,10 @@ export const Chat = (props: IChatProps) => {
                       {chat.id}
                     </Button>
                   </td>
-                  <td>{chat.createdAt ? <TextFormat type="date" value={chat.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>{chat.updatedAt ? <TextFormat type="date" value={chat.updatedAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{chat.createdDate ? <TextFormat type="date" value={chat.createdDate} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>
+                    {chat.lastModifiedDate ? <TextFormat type="date" value={chat.lastModifiedDate} format={APP_DATE_FORMAT} /> : null}
+                  </td>
                   <td>{chat.chatpiChatId}</td>
                   <td>{chat.baseId ? <Link to={`base/${chat.baseId}`}>{chat.baseId}</Link> : ''}</td>
                   <td className="text-right">

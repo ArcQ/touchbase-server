@@ -5,7 +5,7 @@ export interface IMission {
   name?: string;
   description?: string;
   scoreReward?: string;
-  missonType?: MissionType;
+  missionType?: MissionType;
 }
 
 export const defaultValue: Readonly<IMission> = {};

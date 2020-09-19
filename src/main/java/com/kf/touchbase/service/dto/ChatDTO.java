@@ -13,9 +13,9 @@ public class ChatDTO implements Serializable {
 
     private Long id;
 
-    private ZonedDateTime createdAt;
+    private ZonedDateTime createdDate;
 
-    private ZonedDateTime updatedAt;
+    private ZonedDateTime lastModifiedDate;
 
     private String chatpiChatId;
 
@@ -30,20 +30,20 @@ public class ChatDTO implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public String getChatpiChatId() {
@@ -87,8 +87,8 @@ public class ChatDTO implements Serializable {
     public String toString() {
         return "ChatDTO{" +
             "id=" + getId() +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", chatpiChatId='" + getChatpiChatId() + "'" +
             ", baseId=" + getBaseId() +
             "}";

@@ -15,10 +15,10 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="created_at" type="datetime">
+            <column name="created_date" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_at" type="datetime">
+            <column name="last_modified_date" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="name" type="varchar(255)">
@@ -35,8 +35,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="base" columnName="created_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="base" columnName="updated_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="base" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="base" columnName="last_modified_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200918174236-1-relations" author="jhipster">
@@ -58,8 +58,8 @@
                   separator=";"
                   tableName="base">
             <column name="id" type="numeric"/>
-            <column name="created_at" type="datetime"/>
-            <column name="updated_at" type="datetime"/>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_date" type="datetime"/>
             <column name="name" type="string"/>
             <column name="score" type="numeric"/>
             <column name="image_url" type="string"/>

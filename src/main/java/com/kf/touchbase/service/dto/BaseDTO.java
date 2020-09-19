@@ -14,9 +14,9 @@ public class BaseDTO implements Serializable {
 
     private Long id;
 
-    private ZonedDateTime createdAt;
+    private ZonedDateTime createdDate;
 
-    private ZonedDateTime updatedAt;
+    private ZonedDateTime lastModifiedDate;
 
     @NotNull
     private String name;
@@ -37,20 +37,20 @@ public class BaseDTO implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public String getName() {
@@ -110,8 +110,8 @@ public class BaseDTO implements Serializable {
     public String toString() {
         return "BaseDTO{" +
             "id=" + getId() +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", name='" + getName() + "'" +
             ", score=" + getScore() +
             ", imageUrl='" + getImageUrl() + "'" +

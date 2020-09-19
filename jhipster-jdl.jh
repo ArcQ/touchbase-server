@@ -10,7 +10,7 @@ entity Base {
 
 entity Chat {
 	createdDate ZonedDateTime,
-    lastModifiedDate ZonedDateTime,
+  lastModifiedDate ZonedDateTime,
 	chatpiChatId String,
 }
 
@@ -22,14 +22,14 @@ entity Mission {
 }
 
 enum MissionType {
-    PERIODIC, WEEKLY, ONE_TIME
+  PERIODIC, WEEKLY, ONE_TIME
 }
 
 
 entity BaseMember {
 	createdDate ZonedDateTime,
-    lastModifiedDate ZonedDateTime,
-    role Role
+  lastModifiedDate ZonedDateTime,
+  role Role
 }
 
 enum Role {
@@ -46,10 +46,6 @@ enum BaseJoinAction {
 
 relationship OneToMany {
 	Base{chats} to Chat{base}
-}
-
-relationship OneToMany {
-	Base{members} to BaseMember{base}
 }
 
 relationship ManyToOne {

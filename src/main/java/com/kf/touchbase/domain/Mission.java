@@ -34,8 +34,8 @@ public class Mission implements Serializable {
     private String scoreReward;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "misson_type")
-    private MissionType missonType;
+    @Column(name = "mission_type")
+    private MissionType missionType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -85,17 +85,17 @@ public class Mission implements Serializable {
         this.scoreReward = scoreReward;
     }
 
-    public MissionType getMissonType() {
-        return missonType;
+    public MissionType getMissionType() {
+        return missionType;
     }
 
-    public Mission missonType(MissionType missonType) {
-        this.missonType = missonType;
+    public Mission missionType(MissionType missionType) {
+        this.missionType = missionType;
         return this;
     }
 
-    public void setMissonType(MissionType missonType) {
-        this.missonType = missonType;
+    public void setMissionType(MissionType missionType) {
+        this.missionType = missionType;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -122,7 +122,7 @@ public class Mission implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", scoreReward='" + getScoreReward() + "'" +
-            ", missonType='" + getMissonType() + "'" +
+            ", missionType='" + getMissionType() + "'" +
             "}";
     }
 }

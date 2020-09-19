@@ -16,14 +16,13 @@
       "detail": {
         "title": "Base"
       },
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
       "name": "Name",
       "score": "Score",
       "imageUrl": "Image Url",
       "isActive": "Is Active",
-      "chats": "Chats",
-      "members": "Members"
+      "chats": "Chats"
     }
   }
 }

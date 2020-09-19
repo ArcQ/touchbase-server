@@ -26,11 +26,11 @@ public class Base implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "created_at")
-    private ZonedDateTime createdAt;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated_at")
-    private ZonedDateTime updatedAt;
+    @Column(name = "last_modified_date")
+    private ZonedDateTime lastModifiedDate;
 
     @NotNull
     @Column(name = "name", nullable = false)
@@ -50,10 +50,6 @@ public class Base implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Chat> chats = new HashSet<>();
 
-    @OneToMany(mappedBy = "base")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<BaseMember> members = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -63,30 +59,30 @@ public class Base implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public Base createdAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public Base createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public Base updatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public Base lastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
         return this;
     }
 
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public String getName() {
@@ -165,31 +161,6 @@ public class Base implements Serializable {
     public void setChats(Set<Chat> chats) {
         this.chats = chats;
     }
-
-    public Set<BaseMember> getMembers() {
-        return members;
-    }
-
-    public Base members(Set<BaseMember> baseMembers) {
-        this.members = baseMembers;
-        return this;
-    }
-
-    public Base addMembers(BaseMember baseMember) {
-        this.members.add(baseMember);
-        baseMember.setBase(this);
-        return this;
-    }
-
-    public Base removeMembers(BaseMember baseMember) {
-        this.members.remove(baseMember);
-        baseMember.setBase(null);
-        return this;
-    }
-
-    public void setMembers(Set<BaseMember> baseMembers) {
-        this.members = baseMembers;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -212,8 +183,8 @@ public class Base implements Serializable {
     public String toString() {
         return "Base{" +
             "id=" + getId() +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", name='" + getName() + "'" +
             ", score=" + getScore() +
             ", imageUrl='" + getImageUrl() + "'" +

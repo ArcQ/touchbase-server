@@ -1,4 +1,4 @@
-id;created_at;updated_at;chatpi_chat_id
+id;created_date;last_modified_date;chatpi_chat_id
 1;2020-09-18T01:15:34;2020-09-17T18:14:22;withdrawal
 2;2020-09-17T18:38:58;2020-09-17T23:14:45;Cotton Berkshire
 3;2020-09-17T18:00:21;2020-09-18T13:40:24;Kentucky generate

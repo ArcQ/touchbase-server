@@ -16,12 +16,11 @@
       "detail": {
         "title": "Base Member"
       },
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
       "role": "Role",
       "base": "Base",
-      "member": "Member",
-      "base": "Base"
+      "member": "Member"
     }
   }
 }

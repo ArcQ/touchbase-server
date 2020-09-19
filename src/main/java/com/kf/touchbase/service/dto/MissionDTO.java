@@ -19,7 +19,7 @@ public class MissionDTO implements Serializable {
 
     private String scoreReward;
 
-    private MissionType missonType;
+    private MissionType missionType;
 
 
     public Long getId() {
@@ -54,12 +54,12 @@ public class MissionDTO implements Serializable {
         this.scoreReward = scoreReward;
     }
 
-    public MissionType getMissonType() {
-        return missonType;
+    public MissionType getMissionType() {
+        return missionType;
     }
 
-    public void setMissonType(MissionType missonType) {
-        this.missonType = missonType;
+    public void setMissionType(MissionType missionType) {
+        this.missionType = missionType;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class MissionDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", scoreReward='" + getScoreReward() + "'" +
-            ", missonType='" + getMissonType() + "'" +
+            ", missionType='" + getMissionType() + "'" +
             "}";
     }
 }

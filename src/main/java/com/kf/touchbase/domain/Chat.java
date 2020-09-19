@@ -24,11 +24,11 @@ public class Chat implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "created_at")
-    private ZonedDateTime createdAt;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated_at")
-    private ZonedDateTime updatedAt;
+    @Column(name = "last_modified_date")
+    private ZonedDateTime lastModifiedDate;
 
     @Column(name = "chatpi_chat_id")
     private String chatpiChatId;
@@ -46,30 +46,30 @@ public class Chat implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public Chat createdAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public Chat createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public Chat updatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public Chat lastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
         return this;
     }
 
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public String getChatpiChatId() {
@@ -119,8 +119,8 @@ public class Chat implements Serializable {
     public String toString() {
         return "Chat{" +
             "id=" + getId() +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", chatpiChatId='" + getChatpiChatId() + "'" +
             "}";
     }

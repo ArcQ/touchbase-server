@@ -44,11 +44,11 @@ export const MissionDetail = (props: IMissionDetailProps) => {
           </dt>
           <dd>{missionEntity.scoreReward}</dd>
           <dt>
-            <span id="missonType">
-              <Translate contentKey="touchbaseApp.mission.missonType">Misson Type</Translate>
+            <span id="missionType">
+              <Translate contentKey="touchbaseApp.mission.missionType">Mission Type</Translate>
             </span>
           </dt>
-          <dd>{missionEntity.missonType}</dd>
+          <dd>{missionEntity.missionType}</dd>
         </dl>
         <Button tag={Link} to="/mission" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

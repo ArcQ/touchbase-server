@@ -26,20 +26,22 @@ export const BaseMemberDetail = (props: IBaseMemberDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="createdAt">
-              <Translate contentKey="touchbaseApp.baseMember.createdAt">Created At</Translate>
+            <span id="createdDate">
+              <Translate contentKey="touchbaseApp.baseMember.createdDate">Created Date</Translate>
             </span>
           </dt>
           <dd>
-            {baseMemberEntity.createdAt ? <TextFormat value={baseMemberEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}
+            {baseMemberEntity.createdDate ? <TextFormat value={baseMemberEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}
           </dd>
           <dt>
-            <span id="updatedAt">
-              <Translate contentKey="touchbaseApp.baseMember.updatedAt">Updated At</Translate>
+            <span id="lastModifiedDate">
+              <Translate contentKey="touchbaseApp.baseMember.lastModifiedDate">Last Modified Date</Translate>
             </span>
           </dt>
           <dd>
-            {baseMemberEntity.updatedAt ? <TextFormat value={baseMemberEntity.updatedAt} type="date" format={APP_DATE_FORMAT} /> : null}
+            {baseMemberEntity.lastModifiedDate ? (
+              <TextFormat value={baseMemberEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} />
+            ) : null}
           </dd>
           <dt>
             <span id="role">
@@ -55,10 +57,6 @@ export const BaseMemberDetail = (props: IBaseMemberDetailProps) => {
             <Translate contentKey="touchbaseApp.baseMember.member">Member</Translate>
           </dt>
           <dd>{baseMemberEntity.memberId ? baseMemberEntity.memberId : ''}</dd>
-          <dt>
-            <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
-          </dt>
-          <dd>{baseMemberEntity.baseId ? baseMemberEntity.baseId : ''}</dd>
         </dl>
         <Button tag={Link} to="/base-member" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

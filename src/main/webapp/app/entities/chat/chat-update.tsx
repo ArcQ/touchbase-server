@@ -43,8 +43,8 @@ export const ChatUpdate = (props: IChatUpdateProps) => {
   }, [props.updateSuccess]);
 
   const saveEntity = (event, errors, values) => {
-    values.createdAt = convertDateTimeToServer(values.createdAt);
-    values.updatedAt = convertDateTimeToServer(values.updatedAt);
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.lastModifiedDate = convertDateTimeToServer(values.lastModifiedDate);
 
     if (errors.length === 0) {
       const entity = {
@@ -84,29 +84,29 @@ export const ChatUpdate = (props: IChatUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label id="createdAtLabel" for="chat-createdAt">
-                  <Translate contentKey="touchbaseApp.chat.createdAt">Created At</Translate>
+                <Label id="createdDateLabel" for="chat-createdDate">
+                  <Translate contentKey="touchbaseApp.chat.createdDate">Created Date</Translate>
                 </Label>
                 <AvInput
-                  id="chat-createdAt"
+                  id="chat-createdDate"
                   type="datetime-local"
                   className="form-control"
-                  name="createdAt"
+                  name="createdDate"
                   placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.chatEntity.createdAt)}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.chatEntity.createdDate)}
                 />
               </AvGroup>
               <AvGroup>
-                <Label id="updatedAtLabel" for="chat-updatedAt">
-                  <Translate contentKey="touchbaseApp.chat.updatedAt">Updated At</Translate>
+                <Label id="lastModifiedDateLabel" for="chat-lastModifiedDate">
+                  <Translate contentKey="touchbaseApp.chat.lastModifiedDate">Last Modified Date</Translate>
                 </Label>
                 <AvInput
-                  id="chat-updatedAt"
+                  id="chat-lastModifiedDate"
                   type="datetime-local"
                   className="form-control"
-                  name="updatedAt"
+                  name="lastModifiedDate"
                   placeholder={'YYYY-MM-DD HH:mm'}
-                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.chatEntity.updatedAt)}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.chatEntity.lastModifiedDate)}
                 />
               </AvGroup>
               <AvGroup>

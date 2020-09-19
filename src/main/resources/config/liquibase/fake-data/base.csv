@@ -1,4 +1,4 @@
-id;created_at;updated_at;name;score;image_url;is_active
+id;created_date;last_modified_date;name;score;image_url;is_active
 1;2020-09-18T12:20:52;2020-09-18T06:47:33;Incredible Steel Ball Italy;30453;Concrete Metal Cordoba Oro;false
 2;2020-09-18T10:08:12;2020-09-18T04:33:48;Inlet;55395;Handcrafted Steel Chicken neural;false
 3;2020-09-18T13:52:38;2020-09-18T01:50:06;Synergistic application;43216;syndicate Belize Licensed;false

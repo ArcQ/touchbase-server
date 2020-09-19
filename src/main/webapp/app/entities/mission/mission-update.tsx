@@ -94,15 +94,15 @@ export const MissionUpdate = (props: IMissionUpdateProps) => {
                 <AvField id="mission-scoreReward" type="text" name="scoreReward" />
               </AvGroup>
               <AvGroup>
-                <Label id="missonTypeLabel" for="mission-missonType">
-                  <Translate contentKey="touchbaseApp.mission.missonType">Misson Type</Translate>
+                <Label id="missionTypeLabel" for="mission-missionType">
+                  <Translate contentKey="touchbaseApp.mission.missionType">Mission Type</Translate>
                 </Label>
                 <AvInput
-                  id="mission-missonType"
+                  id="mission-missionType"
                   type="select"
                   className="form-control"
-                  name="missonType"
-                  value={(!isNew && missionEntity.missonType) || 'PERIODIC'}
+                  name="missionType"
+                  value={(!isNew && missionEntity.missionType) || 'PERIODIC'}
                 >
                   <option value="PERIODIC">{translate('touchbaseApp.MissionType.PERIODIC')}</option>
                   <option value="WEEKLY">{translate('touchbaseApp.MissionType.WEEKLY')}</option>

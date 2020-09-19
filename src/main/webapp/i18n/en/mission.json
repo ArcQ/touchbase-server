@@ -19,7 +19,7 @@
       "name": "Name",
       "description": "Description",
       "scoreReward": "Score Reward",
-      "missonType": "Misson Type"
+      "missionType": "Mission Type"
     }
   }
 }

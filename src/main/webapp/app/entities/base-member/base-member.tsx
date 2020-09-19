@@ -37,10 +37,10 @@ export const BaseMember = (props: IBaseMemberProps) => {
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="touchbaseApp.baseMember.createdAt">Created At</Translate>
+                  <Translate contentKey="touchbaseApp.baseMember.createdDate">Created Date</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="touchbaseApp.baseMember.updatedAt">Updated At</Translate>
+                  <Translate contentKey="touchbaseApp.baseMember.lastModifiedDate">Last Modified Date</Translate>
                 </th>
                 <th>
                   <Translate contentKey="touchbaseApp.baseMember.role">Role</Translate>
@@ -50,9 +50,6 @@ export const BaseMember = (props: IBaseMemberProps) => {
                 </th>
                 <th>
                   <Translate contentKey="touchbaseApp.baseMember.member">Member</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
                 </th>
                 <th />
               </tr>
@@ -65,14 +62,19 @@ export const BaseMember = (props: IBaseMemberProps) => {
                       {baseMember.id}
                     </Button>
                   </td>
-                  <td>{baseMember.createdAt ? <TextFormat type="date" value={baseMember.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>{baseMember.updatedAt ? <TextFormat type="date" value={baseMember.updatedAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>
+                    {baseMember.createdDate ? <TextFormat type="date" value={baseMember.createdDate} format={APP_DATE_FORMAT} /> : null}
+                  </td>
+                  <td>
+                    {baseMember.lastModifiedDate ? (
+                      <TextFormat type="date" value={baseMember.lastModifiedDate} format={APP_DATE_FORMAT} />
+                    ) : null}
+                  </td>
                   <td>
                     <Translate contentKey={`touchbaseApp.Role.${baseMember.role}`} />
                   </td>
                   <td>{baseMember.baseId ? <Link to={`base/${baseMember.baseId}`}>{baseMember.baseId}</Link> : ''}</td>
                   <td>{baseMember.memberId ? baseMember.memberId : ''}</td>
-                  <td>{baseMember.baseId ? <Link to={`base/${baseMember.baseId}`}>{baseMember.baseId}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${baseMember.id}`} color="info" size="sm">

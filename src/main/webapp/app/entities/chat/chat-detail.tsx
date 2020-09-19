@@ -26,17 +26,19 @@ export const ChatDetail = (props: IChatDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="createdAt">
-              <Translate contentKey="touchbaseApp.chat.createdAt">Created At</Translate>
+            <span id="createdDate">
+              <Translate contentKey="touchbaseApp.chat.createdDate">Created Date</Translate>
             </span>
           </dt>
-          <dd>{chatEntity.createdAt ? <TextFormat value={chatEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dd>{chatEntity.createdDate ? <TextFormat value={chatEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
           <dt>
-            <span id="updatedAt">
-              <Translate contentKey="touchbaseApp.chat.updatedAt">Updated At</Translate>
+            <span id="lastModifiedDate">
+              <Translate contentKey="touchbaseApp.chat.lastModifiedDate">Last Modified Date</Translate>
             </span>
           </dt>
-          <dd>{chatEntity.updatedAt ? <TextFormat value={chatEntity.updatedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dd>
+            {chatEntity.lastModifiedDate ? <TextFormat value={chatEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} /> : null}
+          </dd>
           <dt>
             <span id="chatpiChatId">
               <Translate contentKey="touchbaseApp.chat.chatpiChatId">Chatpi Chat Id</Translate>

@@ -1,13 +1,15 @@
 package com.kf.touchbase.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.kf.touchbase.domain.enumeration.Role;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+
+import com.kf.touchbase.domain.enumeration.Role;
 
 /**
  * A BaseMember.
@@ -24,18 +26,18 @@ public class BaseMember implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "created_at")
-    private ZonedDateTime createdAt;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated_at")
-    private ZonedDateTime updatedAt;
+    @Column(name = "last_modified_date")
+    private ZonedDateTime lastModifiedDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
 
     @ManyToOne
-    @JsonIgnoreProperties("members")
+    @JsonIgnoreProperties("baseMembers")
     private Base base;
 
     @ManyToOne
@@ -51,30 +53,30 @@ public class BaseMember implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public BaseMember createdAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public BaseMember createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public BaseMember updatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public BaseMember lastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
         return this;
     }
 
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Role getRole() {
@@ -90,9 +92,17 @@ public class BaseMember implements Serializable {
         this.role = role;
     }
 
+    public Base getBase() {
+        return base;
+    }
+
     public BaseMember base(Base base) {
         this.base = base;
         return this;
+    }
+
+    public void setBase(Base base) {
+        this.base = base;
     }
 
     public User getMember() {
@@ -106,14 +116,6 @@ public class BaseMember implements Serializable {
 
     public void setMember(User user) {
         this.member = user;
-    }
-
-    public Base getBase() {
-        return base;
-    }
-
-    public void setBase(Base base) {
-        this.base = base;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -137,8 +139,8 @@ public class BaseMember implements Serializable {
     public String toString() {
         return "BaseMember{" +
             "id=" + getId() +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", role='" + getRole() + "'" +
             "}";
     }
