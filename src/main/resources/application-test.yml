@@ -53,3 +53,7 @@ jhipster:
     logs: # Reports metrics in the logs
       enabled: false
       report-frequency: 60 # in seconds
+
+junit.jupiter.execution.parallel:
+  enabled: true
+  default: concurrent
