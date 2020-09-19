@@ -11,9 +11,9 @@
 # ===================================================================
 datasources:
   default:
-    url: 'jdbc:postgresql://localhost:5432/touchbase'
-    username: 'touchbase'
-    password: ''
+    url: 'jdbc:postgresql://localhost:5432/touchbasedb'
+    username: 'postgres'
+    password: 'pw123'
     driverClassName: 'org.postgresql.Driver'
     poolName: Hikari
     autoCommit: false
@@ -54,6 +54,9 @@ logging:
     com.kf.touchbase: DEBUG
 
 micronaut:
+  caches:
+    headlines:
+      charset: 'UTF-8'
   server:
     port: 8080
     cors:

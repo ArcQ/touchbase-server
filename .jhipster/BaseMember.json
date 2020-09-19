@@ -18,6 +18,13 @@
   "relationships": [
     {
       "relationshipType": "many-to-one",
+      "otherEntityName": "base",
+      "otherEntityRelationshipName": "baseMember",
+      "relationshipName": "base",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "baseMember",
       "relationshipName": "member",

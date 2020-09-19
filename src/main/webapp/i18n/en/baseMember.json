@@ -19,6 +19,7 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "role": "Role",
+      "base": "Base",
       "member": "Member",
       "base": "Base"
     }

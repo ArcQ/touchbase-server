@@ -48,6 +48,10 @@ export const BaseMemberDetail = (props: IBaseMemberDetailProps) => {
           </dt>
           <dd>{baseMemberEntity.role}</dd>
           <dt>
+            <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
+          </dt>
+          <dd>{baseMemberEntity.baseId ? baseMemberEntity.baseId : ''}</dd>
+          <dt>
             <Translate contentKey="touchbaseApp.baseMember.member">Member</Translate>
           </dt>
           <dd>{baseMemberEntity.memberId ? baseMemberEntity.memberId : ''}</dd>

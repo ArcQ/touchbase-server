@@ -46,6 +46,9 @@ export const BaseMember = (props: IBaseMemberProps) => {
                   <Translate contentKey="touchbaseApp.baseMember.role">Role</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
+                </th>
+                <th>
                   <Translate contentKey="touchbaseApp.baseMember.member">Member</Translate>
                 </th>
                 <th>
@@ -67,6 +70,7 @@ export const BaseMember = (props: IBaseMemberProps) => {
                   <td>
                     <Translate contentKey={`touchbaseApp.Role.${baseMember.role}`} />
                   </td>
+                  <td>{baseMember.baseId ? <Link to={`base/${baseMember.baseId}`}>{baseMember.baseId}</Link> : ''}</td>
                   <td>{baseMember.memberId ? baseMember.memberId : ''}</td>
                   <td>{baseMember.baseId ? <Link to={`base/${baseMember.baseId}`}>{baseMember.baseId}</Link> : ''}</td>
                   <td className="text-right">

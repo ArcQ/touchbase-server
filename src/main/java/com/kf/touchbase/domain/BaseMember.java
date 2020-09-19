@@ -1,15 +1,13 @@
 package com.kf.touchbase.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.kf.touchbase.domain.enumeration.Role;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-
-import com.kf.touchbase.domain.enumeration.Role;
 
 /**
  * A BaseMember.
@@ -37,12 +35,12 @@ public class BaseMember implements Serializable {
     private Role role;
 
     @ManyToOne
-    @JsonIgnoreProperties("baseMembers")
-    private User member;
-
-    @ManyToOne
     @JsonIgnoreProperties("members")
     private Base base;
+
+    @ManyToOne
+    @JsonIgnoreProperties("baseMembers")
+    private User member;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -92,6 +90,11 @@ public class BaseMember implements Serializable {
         this.role = role;
     }
 
+    public BaseMember base(Base base) {
+        this.base = base;
+        return this;
+    }
+
     public User getMember() {
         return member;
     }
@@ -107,11 +110,6 @@ public class BaseMember implements Serializable {
 
     public Base getBase() {
         return base;
-    }
-
-    public BaseMember base(Base base) {
-        this.base = base;
-        return this;
     }
 
     public void setBase(Base base) {
