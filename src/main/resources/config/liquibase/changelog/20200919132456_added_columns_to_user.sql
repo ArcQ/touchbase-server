@@ -1,0 +1,3 @@
+ALTER TABLE jhi_user
+    ADD auth_key VARCHAR(50), ADD score DOUBLE PRECISION DEFAULT 0, ADD login_type VARCHAR(10);
+

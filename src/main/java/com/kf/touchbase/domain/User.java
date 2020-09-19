@@ -1,15 +1,13 @@
 package com.kf.touchbase.domain;
 
-import com.kf.touchbase.config.Constants;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kf.touchbase.config.Constants;
 import io.micronaut.data.annotation.DateCreated;
 import io.micronaut.data.annotation.DateUpdated;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -74,7 +72,6 @@ public class User implements Serializable {
     @Size(max = 256)
     @Column(name = "image_url", length = 256)
     private String imageUrl;
-
 
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)

@@ -1,6 +1,6 @@
 entity Base {
-	createdAt ZonedDateTime,
-    updatedAt ZonedDateTime,
+	createdDate ZonedDateTime,
+    lastModifiedDate ZonedDateTime,
 
     name String required,
     score Double,
@@ -9,8 +9,8 @@ entity Base {
 }
 
 entity Chat {
-	createdAt ZonedDateTime,
-    updatedAt ZonedDateTime,
+	createdDate ZonedDateTime,
+    lastModifiedDate ZonedDateTime,
 	chatpiChatId String,
 }
 
@@ -18,7 +18,7 @@ entity Mission {
 	name String,
 	description String,
 	scoreReward String,
-	missonType MissionType
+	missionType MissionType
 }
 
 enum MissionType {
@@ -27,8 +27,8 @@ enum MissionType {
 
 
 entity BaseMember {
-	createdAt ZonedDateTime,
-    updatedAt ZonedDateTime,
+	createdDate ZonedDateTime,
+    lastModifiedDate ZonedDateTime,
     role Role
 }
 
