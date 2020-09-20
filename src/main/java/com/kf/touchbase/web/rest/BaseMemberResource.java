@@ -1,32 +1,29 @@
 package com.kf.touchbase.web.rest;
 
+import com.kf.touchbase.security.AuthoritiesConstants;
 import com.kf.touchbase.service.BaseMemberService;
-import com.kf.touchbase.web.rest.errors.BadRequestAlertException;
 import com.kf.touchbase.service.dto.BaseMemberDTO;
-
 import com.kf.touchbase.util.HeaderUtil;
+import com.kf.touchbase.web.rest.errors.BadRequestAlertException;
 import io.micronaut.context.annotation.Value;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
-import io.micronaut.http.uri.UriBuilder;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
-
+import io.micronaut.security.annotation.Secured;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import javax.annotation.Nullable;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.kf.touchbase.domain.BaseMember}.
  */
 @Controller("/api")
+@Secured(AuthoritiesConstants.ADMIN)
 public class BaseMemberResource {
 
     private final Logger log = LoggerFactory.getLogger(BaseMemberResource.class);
@@ -107,7 +104,7 @@ public class BaseMemberResource {
     @ExecuteOn(TaskExecutors.IO)
     public Optional<BaseMemberDTO> getBaseMember(@PathVariable Long id) {
         log.debug("REST request to get BaseMember : {}", id);
-        
+
         return baseMemberService.findOne(id);
     }
 

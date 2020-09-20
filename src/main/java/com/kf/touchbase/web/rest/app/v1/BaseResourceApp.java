@@ -1,5 +1,6 @@
 package com.kf.touchbase.web.rest.app.v1;
 
+import com.kf.touchbase.security.AuthoritiesConstants;
 import com.kf.touchbase.service.app.BaseServiceApp;
 import com.kf.touchbase.service.dto.BaseDTO;
 import com.kf.touchbase.web.rest.BaseResource;
@@ -10,6 +11,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
+import io.micronaut.security.annotation.Secured;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller("/api/app/v1")
+@Secured(AuthoritiesConstants.USER)
 public class BaseResourceApp {
 
     private final Logger log = LoggerFactory.getLogger(BaseResource.class);

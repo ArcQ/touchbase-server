@@ -3,20 +3,23 @@ package com.kf.touchbase.web.rest;
 
 import com.kf.touchbase.domain.User;
 import com.kf.touchbase.repository.UserRepository;
-import com.kf.touchbase.security.SecurityUtils;
+import com.kf.touchbase.security.AuthoritiesConstants;
 import com.kf.touchbase.service.MailService;
 import com.kf.touchbase.service.UserService;
 import com.kf.touchbase.service.dto.PasswordChangeDTO;
 import com.kf.touchbase.service.dto.UserDTO;
-import com.kf.touchbase.web.rest.errors.*;
+import com.kf.touchbase.web.rest.errors.EmailAlreadyUsedException;
+import com.kf.touchbase.web.rest.errors.EmailNotFoundException;
+import com.kf.touchbase.web.rest.errors.InvalidPasswordException;
+import com.kf.touchbase.web.rest.errors.LoginAlreadyUsedException;
 import com.kf.touchbase.web.rest.vm.KeyAndPasswordVM;
 import com.kf.touchbase.web.rest.vm.ManagedUserVM;
-
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
+import io.micronaut.security.annotation.Secured;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +27,13 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nullable;
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.*;
+import java.util.Optional;
 
 /**
  * REST controller for managing the current user's account.
  */
 @Controller("/api")
+@Secured(AuthoritiesConstants.ADMIN)
 public class AccountResource {
 
     private static class AccountResourceException extends RuntimeException {

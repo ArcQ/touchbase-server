@@ -1,32 +1,29 @@
 package com.kf.touchbase.web.rest;
 
+import com.kf.touchbase.security.AuthoritiesConstants;
 import com.kf.touchbase.service.BaseJoinService;
-import com.kf.touchbase.web.rest.errors.BadRequestAlertException;
 import com.kf.touchbase.service.dto.BaseJoinDTO;
-
 import com.kf.touchbase.util.HeaderUtil;
+import com.kf.touchbase.web.rest.errors.BadRequestAlertException;
 import io.micronaut.context.annotation.Value;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
-import io.micronaut.http.uri.UriBuilder;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
-
+import io.micronaut.security.annotation.Secured;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import javax.annotation.Nullable;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.kf.touchbase.domain.BaseJoin}.
  */
 @Controller("/api")
+@Secured(AuthoritiesConstants.ADMIN)
 public class BaseJoinResource {
 
     private final Logger log = LoggerFactory.getLogger(BaseJoinResource.class);
@@ -107,7 +104,7 @@ public class BaseJoinResource {
     @ExecuteOn(TaskExecutors.IO)
     public Optional<BaseJoinDTO> getBaseJoin(@PathVariable Long id) {
         log.debug("REST request to get BaseJoin : {}", id);
-        
+
         return baseJoinService.findOne(id);
     }
 
