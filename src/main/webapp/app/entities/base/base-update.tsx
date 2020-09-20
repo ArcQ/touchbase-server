@@ -7,6 +7,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './base.reducer';
 import { IBase } from 'app/shared/model/base.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -15,9 +17,10 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IBaseUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const BaseUpdate = (props: IBaseUpdateProps) => {
+  const [creatorId, setCreatorId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { baseEntity, loading, updating } = props;
+  const { baseEntity, users, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/base');
@@ -27,6 +30,8 @@ export const BaseUpdate = (props: IBaseUpdateProps) => {
     if (!isNew) {
       props.getEntity(props.match.params.id);
     }
+
+    props.getUsers();
   }, []);
 
   useEffect(() => {
@@ -140,6 +145,21 @@ export const BaseUpdate = (props: IBaseUpdateProps) => {
                   <Translate contentKey="touchbaseApp.base.isActive">Is Active</Translate>
                 </Label>
               </AvGroup>
+              <AvGroup>
+                <Label for="base-creator">
+                  <Translate contentKey="touchbaseApp.base.creator">Creator</Translate>
+                </Label>
+                <AvInput id="base-creator" type="select" className="form-control" name="creatorId">
+                  <option value="" key="0" />
+                  {users
+                    ? users.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/base" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
@@ -162,6 +182,7 @@ export const BaseUpdate = (props: IBaseUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
+  users: storeState.userManagement.users,
   baseEntity: storeState.base.entity,
   loading: storeState.base.loading,
   updating: storeState.base.updating,
@@ -169,6 +190,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getUsers,
   getEntity,
   updateEntity,
   createEntity,

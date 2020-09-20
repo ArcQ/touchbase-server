@@ -63,6 +63,10 @@ export const BaseDetail = (props: IBaseDetailProps) => {
             </span>
           </dt>
           <dd>{baseEntity.isActive ? 'true' : 'false'}</dd>
+          <dt>
+            <Translate contentKey="touchbaseApp.base.creator">Creator</Translate>
+          </dt>
+          <dd>{baseEntity.creatorId ? baseEntity.creatorId : ''}</dd>
         </dl>
         <Button tag={Link} to="/base" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

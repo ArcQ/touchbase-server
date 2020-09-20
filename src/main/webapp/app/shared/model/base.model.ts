@@ -9,6 +9,7 @@ export interface IBase {
   score?: number;
   imageUrl?: string;
   isActive?: boolean;
+  creatorId?: number;
   chats?: IChat[];
 }
 

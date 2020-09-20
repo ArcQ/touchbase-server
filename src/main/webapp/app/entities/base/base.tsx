@@ -121,6 +121,9 @@ export const Base = (props: IBaseProps) => {
                   <th className="hand" onClick={sort('isActive')}>
                     <Translate contentKey="touchbaseApp.base.isActive">Is Active</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
+                  <th>
+                    <Translate contentKey="touchbaseApp.base.creator">Creator</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
                   <th />
                 </tr>
               </thead>
@@ -140,6 +143,7 @@ export const Base = (props: IBaseProps) => {
                     <td>{base.score}</td>
                     <td>{base.imageUrl}</td>
                     <td>{base.isActive ? 'true' : 'false'}</td>
+                    <td>{base.creatorId ? base.creatorId : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${base.id}`} color="info" size="sm">

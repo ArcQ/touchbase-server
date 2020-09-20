@@ -5689,10 +5689,10 @@ generator-jhipster-micronaut@0.5.0:
     yeoman-environment "2.10.2"
     yeoman-generator "4.10.1"
 
-generator-jhipster-safe-extensions@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/generator-jhipster-safe-extensions/-/generator-jhipster-safe-extensions-0.0.1.tgz#e309a3abae1d16d7bd0a186f56e48f21623faa06"
-  integrity sha512-No4st69oiNYv5QU3+Feic4y3bHHWZ6k7hA2KuDIr9ItC8dA9kcrENiOqXmE8HkCloERjWw1al/w5TCbEO6IQgQ==
+generator-jhipster-safe-extensions@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/generator-jhipster-safe-extensions/-/generator-jhipster-safe-extensions-0.0.2.tgz#6f0bdb687869dbfcba2789c9c1c9ff5df694134f"
+  integrity sha512-sFtvQUHALuUtlJoW5Ymj7oJ73fzaIjv5NxkHWRqEVqTPhHURfqDT/FYg/phwF+D23pHRVo8mnbOZ7DnsQXCnyA==
   dependencies:
     chalk "3.0.0"
     generator-jhipster ">=6.0.0"

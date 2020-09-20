@@ -29,6 +29,8 @@ public class BaseDTO implements Serializable {
     private Boolean isActive;
 
 
+    private Long creatorId;
+
     public Long getId() {
         return id;
     }
@@ -85,6 +87,14 @@ public class BaseDTO implements Serializable {
         this.isActive = isActive;
     }
 
+    public Long getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Long userId) {
+        this.creatorId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -116,6 +126,7 @@ public class BaseDTO implements Serializable {
             ", score=" + getScore() +
             ", imageUrl='" + getImageUrl() + "'" +
             ", isActive='" + isIsActive() + "'" +
+            ", creatorId=" + getCreatorId() +
             "}";
     }
 }

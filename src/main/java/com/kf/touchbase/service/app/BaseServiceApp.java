@@ -1,11 +1,11 @@
 package com.kf.touchbase.service.app;
 
 import com.kf.touchbase.domain.Base;
+import com.kf.touchbase.domain.BaseMember;
 import com.kf.touchbase.domain.User;
 import com.kf.touchbase.domain.enumeration.Role;
-import com.kf.touchbase.repository.BaseRepository;
 import com.kf.touchbase.repository.UserRepository;
-import com.kf.touchbase.service.BaseService;
+import com.kf.touchbase.repository.app.BaseRepositoryApp;
 import com.kf.touchbase.service.mapper.BaseMapper;
 
 import javax.inject.Singleton;
@@ -15,26 +15,30 @@ import java.util.Set;
 
 @Singleton
 @Transactional
-public class BaseServiceApp extends BaseService {
+public class BaseServiceApp {
 
-    UserRepository userRepository;
+    private final BaseMapper baseMapper;
+    private final BaseRepositoryApp baseRepositoryApp;
+    private final UserRepository userRepository;
 
-    public BaseServiceApp(BaseRepository baseRepository, BaseMapper baseMapper, UserRepository userRepository) {
-        super(baseRepository, baseMapper);
+    public BaseServiceApp(BaseMapper baseMapper, BaseRepositoryApp baseRepositoryApp, UserRepository userRepository) {
+        this.baseMapper = baseMapper;
+        this.baseRepositoryApp = baseRepositoryApp;
+        this.userRepository = userRepository;
     }
 
     public Base findIfMemberAdmin(String adminAuthKey, Long baseId) {
-        return baseRepository.findIfMemberAdmin(baseId, adminAuthKey)
+        return baseRepositoryApp.findIfMemberAdmin(baseId, adminAuthKey)
             .orElseThrow(() -> new SecurityException(String.format("%s not allowed", adminAuthKey)));
     }
 
     public List<Base> getOwnBases(String adminAuthKey) {
-        var bases = baseRepository.findAllByMembersUserAuthKey(adminAuthKey);
+        var bases = baseRepositoryApp.findAllByMembersUserAuthKey(adminAuthKey);
         return bases;
     }
 
     public Base getBase(String adminAuthKey, Long baseId) {
-        return baseRepository.findIfMember(baseId, adminAuthKey).orElse(null);
+        return baseRepositoryApp.findIfMember(baseId, adminAuthKey).orElse(null);
     }
 
     @Transactional
@@ -43,20 +47,20 @@ public class BaseServiceApp extends BaseService {
         newBase.setCreator(creator);
         newBase.setAdmins(Set.of(creator));
         newBase.addMember(creator, Role.ADMIN);
-        return baseRepository.save(newBase);
+        return baseRepositoryApp.save(newBase);
     }
 
     public Base patchBase(String adminAuthKey, Long baseId, Base updateBase) throws SecurityException {
         var existingBase = findIfMemberAdmin(adminAuthKey, baseId);
         existingBase.mergeInNotNull(updateBase);
-        return baseRepository.save(existingBase);
+        return baseRepositoryApp.save(existingBase);
     }
 
     public Base addMember(String adminAuthKey, MemberRef memberRef, Long baseId, Role role) throws SecurityException {
         Base existingBase = findIfMemberAdmin(adminAuthKey, baseId);
         User user = userRepository.findById(memberRef.getUserId()).orElseThrow();
         existingBase.addMember(user, role);
-        baseRepository.save(existingBase);
+        baseRepositoryApp.save(existingBase);
         return existingBase;
     }
 

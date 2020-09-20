@@ -76,7 +76,9 @@ micronaut:
       - pattern: /api/account/reset-password/finish
         access: isAnonymous()
       - pattern: /api/**
-        access: isAuthenticated()
+        access: ROLE_ADMIN
+      - pattern: /app/**
+        access: ROLE_ADMIN
       - pattern: /management/health
         access: isAnonymous()
       - pattern: /management/info

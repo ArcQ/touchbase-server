@@ -8,6 +8,10 @@ entity Base {
     isActive Boolean
 }
 
+relationship OneToOne {
+	Base{creator} to User
+}
+
 entity Chat {
 	createdDate ZonedDateTime,
   lastModifiedDate ZonedDateTime,
@@ -32,7 +36,7 @@ entity BaseMember {
 }
 
 enum Role {
-	MEMBER, ADMIN,
+	MEMBER, ADMIN
 }
 
 entity BaseJoin {

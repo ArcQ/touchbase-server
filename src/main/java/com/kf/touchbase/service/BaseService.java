@@ -4,7 +4,6 @@ import com.kf.touchbase.domain.Base;
 import com.kf.touchbase.repository.BaseRepository;
 import com.kf.touchbase.service.dto.BaseDTO;
 import com.kf.touchbase.service.mapper.BaseMapper;
-import io.micronaut.context.annotation.Primary;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.transaction.annotation.ReadOnly;
@@ -18,16 +17,15 @@ import java.util.Optional;
 /**
  * Service Implementation for managing {@link Base}.
  */
-@Primary
 @Singleton
 @Transactional
 public class BaseService {
 
     private final Logger log = LoggerFactory.getLogger(BaseService.class);
 
-    protected final BaseRepository baseRepository;
+    private final BaseRepository baseRepository;
 
-    protected final BaseMapper baseMapper;
+    private final BaseMapper baseMapper;
 
     public BaseService(BaseRepository baseRepository, BaseMapper baseMapper) {
         this.baseRepository = baseRepository;

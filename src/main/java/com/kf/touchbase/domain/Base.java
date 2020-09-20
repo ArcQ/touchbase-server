@@ -46,6 +46,10 @@ public class Base implements Serializable {
     @Column(name = "is_active")
     private Boolean isActive;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User creator;
+
     @OneToMany(mappedBy = "base")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Chat> chats = new HashSet<>();
@@ -135,6 +139,19 @@ public class Base implements Serializable {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public Base creator(User user) {
+        this.creator = user;
+        return this;
+    }
+
+    public void setCreator(User user) {
+        this.creator = user;
     }
 
     public Set<Chat> getChats() {

@@ -30,6 +30,14 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "base",
+      "relationshipName": "creator",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
       "relationshipType": "one-to-many",
       "otherEntityName": "chat",
       "otherEntityRelationshipName": "base",

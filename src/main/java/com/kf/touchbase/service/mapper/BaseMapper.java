@@ -9,10 +9,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Base} and its DTO {@link BaseDTO}.
  */
-@Mapper(componentModel = "jsr330", uses = {})
+@Mapper(componentModel = "jsr330", uses = {UserMapper.class})
 public interface BaseMapper extends EntityMapper<BaseDTO, Base> {
 
+    @Mapping(source = "creator.id", target = "creatorId")
+    BaseDTO toDto(Base base);
 
+    @Mapping(source = "creatorId", target = "creator")
     @Mapping(target = "chats", ignore = true)
     @Mapping(target = "removeChats", ignore = true)
     Base toEntity(BaseDTO baseDTO);
