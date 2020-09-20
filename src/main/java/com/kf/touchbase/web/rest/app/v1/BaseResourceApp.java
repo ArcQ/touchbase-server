@@ -79,6 +79,7 @@ public class BaseResourceApp {
     @ExecuteOn(TaskExecutors.IO)
     public HttpResponse<List<BaseDTO>> getAllBases(HttpRequest request, Pageable pageable) {
         log.debug("App REST request to get all Bases");
+        return baseServiceApp
         return baseResource.getAllBases(request, pageable);
     }
 

@@ -25,9 +25,9 @@ public class BaseService {
 
     private final Logger log = LoggerFactory.getLogger(BaseService.class);
 
-    private final BaseRepository baseRepository;
+    protected final BaseRepository baseRepository;
 
-    private final BaseMapper baseMapper;
+    protected final BaseMapper baseMapper;
 
     public BaseService(BaseRepository baseRepository, BaseMapper baseMapper) {
         this.baseRepository = baseRepository;

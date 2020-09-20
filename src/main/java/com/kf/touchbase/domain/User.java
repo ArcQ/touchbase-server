@@ -41,6 +41,10 @@ public class User implements Serializable {
     @Column(length = 50, unique = true, nullable = false)
     private String login;
 
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "auth_key", length = 50)
+    private String authKey;
 
     @JsonIgnore
     @NotNull
@@ -257,4 +261,11 @@ public class User implements Serializable {
             "}";
     }
 
+    public String getAuthKey() {
+        return authKey;
+    }
+
+    public void setAuthKey(String authKey) {
+        this.authKey = authKey;
+    }
 }

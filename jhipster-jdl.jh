@@ -25,7 +25,6 @@ enum MissionType {
   PERIODIC, WEEKLY, ONE_TIME
 }
 
-
 entity BaseMember {
 	createdDate ZonedDateTime,
   lastModifiedDate ZonedDateTime,
@@ -33,7 +32,7 @@ entity BaseMember {
 }
 
 enum Role {
-	MEMBER, ADMIN
+	MEMBER, ADMIN,
 }
 
 entity BaseJoin {
