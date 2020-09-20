@@ -1,10 +1,11 @@
-package com.kf.touchbase.web.rest;
+package com.kf.touchbase.web.rest.app;
 
 
 import com.kf.touchbase.domain.Base;
 import com.kf.touchbase.repository.BaseRepository;
 import com.kf.touchbase.service.dto.BaseDTO;
 import com.kf.touchbase.service.mapper.BaseMapper;
+import com.kf.touchbase.web.rest.TestUtil;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;
@@ -35,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @MicronautTest(transactional = false)
 @Property(name = "micronaut.security.enabled", value = "false")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class BaseResourceIT {
+public class BaseResourceAppIT {
 
     private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
@@ -100,7 +101,7 @@ public class BaseResourceIT {
         BaseDTO baseDTO = baseMapper.toDto(base);
 
         // Create the Base
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/bases", baseDTO), BaseDTO.class).blockingFirst();
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/app/v1/bases", baseDTO), BaseDTO.class).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.CREATED.getCode());
 
@@ -127,7 +128,7 @@ public class BaseResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/bases", baseDTO), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/app/v1/bases", baseDTO), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.BAD_REQUEST.getCode());
@@ -148,7 +149,7 @@ public class BaseResourceIT {
         BaseDTO baseDTO = baseMapper.toDto(base);
 
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/bases", baseDTO), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/app/v1/bases", baseDTO), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.BAD_REQUEST.getCode());
@@ -167,7 +168,7 @@ public class BaseResourceIT {
         BaseDTO baseDTO = baseMapper.toDto(base);
 
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/bases", baseDTO), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.POST("/api/app/v1/bases", baseDTO), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.BAD_REQUEST.getCode());
@@ -182,7 +183,7 @@ public class BaseResourceIT {
         baseRepository.saveAndFlush(base);
 
         // Get the baseList w/ all the bases
-        List<BaseDTO> bases = client.retrieve(HttpRequest.GET("/api/bases?eagerload=true"), Argument.listOf(BaseDTO.class)).blockingFirst();
+        List<BaseDTO> bases = client.retrieve(HttpRequest.GET("/api/app/v1/bases?eagerload=true"), Argument.listOf(BaseDTO.class)).blockingFirst();
         BaseDTO testBase = bases.get(0);
 
 
@@ -200,7 +201,7 @@ public class BaseResourceIT {
         baseRepository.saveAndFlush(base);
 
         // Get the base
-        BaseDTO testBase = client.retrieve(HttpRequest.GET("/api/bases/" + base.getId()), BaseDTO.class).blockingFirst();
+        BaseDTO testBase = client.retrieve(HttpRequest.GET("/api/app/v1/bases/" + base.getId()), BaseDTO.class).blockingFirst();
 
 
         assertThat(testBase.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
@@ -215,7 +216,7 @@ public class BaseResourceIT {
     public void getNonExistingBase() throws Exception {
         // Get the base
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.GET("/api/bases/"+ Long.MAX_VALUE), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.GET("/api/app/v1/bases/"+ Long.MAX_VALUE), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.NOT_FOUND.getCode());
@@ -241,7 +242,7 @@ public class BaseResourceIT {
         BaseDTO updatedBaseDTO = baseMapper.toDto(updatedBase);
 
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.PUT("/api/bases", updatedBaseDTO), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.PUT("/api/app/v1/bases", updatedBaseDTO), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.OK.getCode());
@@ -268,7 +269,7 @@ public class BaseResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.PUT("/api/bases", baseDTO), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.PUT("/api/app/v1/bases", baseDTO), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.BAD_REQUEST.getCode());
@@ -287,7 +288,7 @@ public class BaseResourceIT {
 
         // Delete the base
         @SuppressWarnings("unchecked")
-        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.DELETE("/api/bases/"+ base.getId()), BaseDTO.class)
+        HttpResponse<BaseDTO> response = client.exchange(HttpRequest.DELETE("/api/app/v1/bases/"+ base.getId()), BaseDTO.class)
             .onErrorReturn(t -> (HttpResponse<BaseDTO>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.NO_CONTENT.getCode());
