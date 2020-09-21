@@ -3,8 +3,7 @@ package com.kf.touchbase.web.rest;
 
 import com.kf.touchbase.domain.Base;
 import com.kf.touchbase.repository.BaseRepository;
-import com.kf.touchbase.service.dto.BaseDTO;
-import com.kf.touchbase.service.mapper.BaseMapper;
+
 import io.micronaut.context.annotation.Property;
 import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;
@@ -14,19 +13,25 @@ import io.micronaut.http.client.RxHttpClient;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.http.client.exceptions.HttpClientResponseException;
 import io.micronaut.test.annotation.MicronautTest;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import javax.inject.Inject;
+
 import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
+import java.time.ZoneId;
 import java.util.List;
 
+import com.kf.touchbase.service.dto.BaseDTO;
+import com.kf.touchbase.service.mapper.BaseMapper;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**

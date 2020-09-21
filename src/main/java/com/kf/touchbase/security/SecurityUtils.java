@@ -26,6 +26,17 @@ public final class SecurityUtils {
     }
 
     /**
+     * Get the authKey of the current user.
+     *
+     * @return the authKey of the current user.
+     */
+    public static String getAuthKey() {
+        return (String) ServerRequestContext.currentRequest()
+            .flatMap(request -> request.getUserPrincipal(Authentication.class))
+            .map(Authentication::getAttributes).orElseThrow().get("sub");
+    }
+
+    /**
      * Check if a user is authenticated.
      *
      * @return true if the user is authenticated, false otherwise.

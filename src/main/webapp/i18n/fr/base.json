@@ -23,7 +23,8 @@
       "imageUrl": "Image Url",
       "isActive": "Is Active",
       "creator": "Creator",
-      "chats": "Chats"
+      "chats": "Chats",
+      "members": "Members"
     }
   }
 }

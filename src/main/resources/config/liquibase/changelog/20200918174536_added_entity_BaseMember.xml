@@ -24,10 +24,10 @@
             <column name="role" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="base_id" type="bigint">
+            <column name="member_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="member_id" type="bigint">
+            <column name="base_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

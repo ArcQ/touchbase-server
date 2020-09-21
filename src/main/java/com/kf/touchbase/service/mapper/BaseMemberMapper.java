@@ -9,15 +9,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link BaseMember} and its DTO {@link BaseMemberDTO}.
  */
-@Mapper(componentModel = "jsr330", uses = {BaseMapper.class, UserMapper.class})
+@Mapper(componentModel = "jsr330", uses = {UserMapper.class, BaseMapper.class})
 public interface BaseMemberMapper extends EntityMapper<BaseMemberDTO, BaseMember> {
 
-    @Mapping(source = "base.id", target = "baseId")
     @Mapping(source = "member.id", target = "memberId")
+    @Mapping(source = "base.id", target = "baseId")
     BaseMemberDTO toDto(BaseMember baseMember);
 
-    @Mapping(source = "baseId", target = "base")
     @Mapping(source = "memberId", target = "member")
+    @Mapping(source = "baseId", target = "base")
     BaseMember toEntity(BaseMemberDTO baseMemberDTO);
 
     default BaseMember fromId(Long id) {

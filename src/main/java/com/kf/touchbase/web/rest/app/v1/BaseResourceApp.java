@@ -1,13 +1,16 @@
 package com.kf.touchbase.web.rest.app.v1;
 
 import com.kf.touchbase.security.AuthoritiesConstants;
+import com.kf.touchbase.security.SecurityUtils;
 import com.kf.touchbase.service.app.BaseServiceApp;
 import com.kf.touchbase.service.dto.BaseDTO;
+import com.kf.touchbase.util.HeaderUtil;
 import com.kf.touchbase.web.rest.BaseResource;
+import com.kf.touchbase.web.rest.errors.BadRequestAlertException;
 import io.micronaut.context.annotation.Value;
-import io.micronaut.data.model.Pageable;
-import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.HttpStatus;
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
@@ -15,11 +18,11 @@ import io.micronaut.security.annotation.Secured;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
 
-@Controller("/api/app/v1")
+@Controller("/app/v1")
 @Secured(AuthoritiesConstants.USER)
 public class BaseResourceApp {
 
@@ -30,12 +33,9 @@ public class BaseResourceApp {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final BaseResource baseResource;
-
     private final BaseServiceApp baseServiceApp;
 
-    public BaseResourceApp(BaseResource baseResource,  BaseServiceApp baseServiceApp) {
-        this.baseResource = baseResource;
+    public BaseResourceApp(BaseServiceApp baseServiceApp) {
         this.baseServiceApp = baseServiceApp;
     }
 
@@ -48,9 +48,22 @@ public class BaseResourceApp {
      */
     @Post("/bases")
     @ExecuteOn(TaskExecutors.IO)
+    @Status(HttpStatus.CREATED)
     public HttpResponse<BaseDTO> createBase(@Body BaseDTO baseDTO) throws URISyntaxException {
         log.debug("App REST request to create Base : {}", baseDTO);
-        return baseResource.createBase(baseDTO);
+        var authKey = SecurityUtils.getAuthKey();
+
+        if (baseDTO.getId() != null) {
+            throw new BadRequestAlertException("A new base cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+
+        BaseDTO result = baseServiceApp.createBase(authKey, baseDTO);
+
+        URI location = new URI("/app/v1/bases/" + result.getId());
+        return HttpResponse.created(result).headers(headers -> {
+            headers.location(location);
+            HeaderUtil.createEntityCreationAlert(headers, applicationName, true, ENTITY_NAME, result.getId().toString());
+        });
     }
 
     /**
@@ -65,8 +78,14 @@ public class BaseResourceApp {
     @Put("/bases")
     @ExecuteOn(TaskExecutors.IO)
     public HttpResponse<BaseDTO> updateBase(@Body BaseDTO baseDTO) throws URISyntaxException {
-        log.debug("App REST request to update Base : {}", baseDTO);
-        return baseResource.updateBase(baseDTO);
+        log.debug("REST request to update Base : {}", baseDTO);
+        if (baseDTO.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        var authKey = SecurityUtils.getAuthKey();
+        BaseDTO result = baseServiceApp.updateBase(authKey, baseDTO);
+        return HttpResponse.ok(result).headers(headers ->
+            HeaderUtil.createEntityUpdateAlert(headers, applicationName, true, ENTITY_NAME, baseDTO.getId().toString()));
     }
 
     /**
@@ -76,10 +95,10 @@ public class BaseResourceApp {
      * @return the {@link HttpResponse} with status {@code 200 (OK)} and the list of bases in body.
      */
     @Get("/bases")
-    @ExecuteOn(TaskExecutors.IO)
-    public HttpResponse<List<BaseDTO>> getAllBases(HttpRequest request, Pageable pageable) {
-        log.debug("App REST request to get all Bases");
-        return baseResource.getAllBases(request, pageable);
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<BaseDTO> getOwnBases() {
+        var authKey = SecurityUtils.getAuthKey();
+        return baseServiceApp.getOwnBases(authKey);
     }
 
     /**
@@ -90,9 +109,10 @@ public class BaseResourceApp {
      */
     @Get("/bases/{id}")
     @ExecuteOn(TaskExecutors.IO)
-    public Optional<BaseDTO> getBase(@PathVariable Long id) {
+    public BaseDTO getBase(@PathVariable Long id) {
         log.debug("REST request to get Base : {}", id);
-        return baseResource.getBase(id);
+        var authKey = SecurityUtils.getAuthKey();
+        return baseServiceApp.getOwnBase(authKey, id);
     }
 
     /**
@@ -104,7 +124,9 @@ public class BaseResourceApp {
     @Delete("/bases/{id}")
     @ExecuteOn(TaskExecutors.IO)
     public HttpResponse deleteBase(@PathVariable Long id) {
-        log.debug("REST request to get Base : {}", id);
-        return baseResource.deleteBase(id);
+        log.debug("REST request to delete Base : {}", id);
+        var authKey = SecurityUtils.getAuthKey();
+        baseServiceApp.makeBaseInactive(authKey, id);
+        return HttpResponse.noContent().headers(headers -> HeaderUtil.createEntityDeletionAlert(headers, applicationName, true, ENTITY_NAME, id.toString()));
     }
 }

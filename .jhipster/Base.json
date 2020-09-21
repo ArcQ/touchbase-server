@@ -42,6 +42,12 @@
       "otherEntityName": "chat",
       "otherEntityRelationshipName": "base",
       "relationshipName": "chats"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "baseMember",
+      "otherEntityRelationshipName": "base",
+      "relationshipName": "members"
     }
   ],
   "changelogDate": "20200918174236",

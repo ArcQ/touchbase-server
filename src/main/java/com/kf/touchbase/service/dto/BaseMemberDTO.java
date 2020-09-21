@@ -1,10 +1,11 @@
 package com.kf.touchbase.service.dto;
 
-import io.micronaut.core.annotation.Introspected;
-import java.time.ZonedDateTime;
-import java.io.Serializable;
-import java.util.Objects;
 import com.kf.touchbase.domain.enumeration.Role;
+import io.micronaut.core.annotation.Introspected;
+
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Objects;
 
 /**
  * A DTO for the {@link com.kf.touchbase.domain.BaseMember} entity.
@@ -21,9 +22,9 @@ public class BaseMemberDTO implements Serializable {
     private Role role;
 
 
-    private Long baseId;
-
     private Long memberId;
+
+    private Long baseId;
 
     public Long getId() {
         return id;
@@ -57,20 +58,20 @@ public class BaseMemberDTO implements Serializable {
         this.role = role;
     }
 
-    public Long getBaseId() {
-        return baseId;
-    }
-
-    public void setBaseId(Long baseId) {
-        this.baseId = baseId;
-    }
-
     public Long getMemberId() {
         return memberId;
     }
 
     public void setMemberId(Long userId) {
         this.memberId = userId;
+    }
+
+    public Long getBaseId() {
+        return baseId;
+    }
+
+    public void setBaseId(Long baseId) {
+        this.baseId = baseId;
     }
 
     @Override
@@ -101,8 +102,8 @@ public class BaseMemberDTO implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", role='" + getRole() + "'" +
-            ", baseId=" + getBaseId() +
             ", memberId=" + getMemberId() +
+            ", baseId=" + getBaseId() +
             "}";
     }
 }

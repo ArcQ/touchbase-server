@@ -1,6 +1,5 @@
 package com.kf.touchbase.web.rest;
 
-import com.kf.touchbase.security.AuthoritiesConstants;
 import com.kf.touchbase.service.BaseMemberService;
 import com.kf.touchbase.service.dto.BaseMemberDTO;
 import com.kf.touchbase.util.HeaderUtil;
@@ -11,7 +10,6 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
-import io.micronaut.security.annotation.Secured;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +21,6 @@ import java.util.Optional;
  * REST controller for managing {@link com.kf.touchbase.domain.BaseMember}.
  */
 @Controller("/api")
-@Secured(AuthoritiesConstants.ADMIN)
 public class BaseMemberResource {
 
     private final Logger log = LoggerFactory.getLogger(BaseMemberResource.class);

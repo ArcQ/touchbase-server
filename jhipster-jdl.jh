@@ -51,8 +51,11 @@ relationship OneToMany {
 	Base{chats} to Chat{base}
 }
 
+relationship OneToMany {
+  Base{members} to BaseMember{base}
+}
+
 relationship ManyToOne {
-    BaseMember{base} to Base,
     BaseMember{member} to User
 }
 

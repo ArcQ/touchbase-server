@@ -54,6 +54,10 @@ public class Base implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Chat> chats = new HashSet<>();
 
+    @OneToMany(mappedBy = "base")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<BaseMember> members = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -177,6 +181,31 @@ public class Base implements Serializable {
 
     public void setChats(Set<Chat> chats) {
         this.chats = chats;
+    }
+
+    public Set<BaseMember> getMembers() {
+        return members;
+    }
+
+    public Base members(Set<BaseMember> baseMembers) {
+        this.members = baseMembers;
+        return this;
+    }
+
+    public Base addMembers(BaseMember baseMember) {
+        this.members.add(baseMember);
+        baseMember.setBase(this);
+        return this;
+    }
+
+    public Base removeMembers(BaseMember baseMember) {
+        this.members.remove(baseMember);
+        baseMember.setBase(null);
+        return this;
+    }
+
+    public void setMembers(Set<BaseMember> baseMembers) {
+        this.members = baseMembers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

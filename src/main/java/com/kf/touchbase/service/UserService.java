@@ -296,6 +296,7 @@ public class UserService {
         Objects.requireNonNull(
             cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).invalidate(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).invalidate(user.getEmail());
+        Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_AUTH_KEY_CACHE)).invalidate(user.getAuthKey());
     }
 
     public Optional<String> getCurrentUserLogin() {

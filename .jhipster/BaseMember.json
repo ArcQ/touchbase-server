@@ -18,16 +18,16 @@
   "relationships": [
     {
       "relationshipType": "many-to-one",
-      "otherEntityName": "base",
+      "otherEntityName": "user",
       "otherEntityRelationshipName": "baseMember",
-      "relationshipName": "base",
+      "relationshipName": "member",
       "otherEntityField": "id"
     },
     {
       "relationshipType": "many-to-one",
-      "otherEntityName": "user",
-      "otherEntityRelationshipName": "baseMember",
-      "relationshipName": "member",
+      "otherEntityName": "base",
+      "otherEntityRelationshipName": "members",
+      "relationshipName": "base",
       "otherEntityField": "id"
     }
   ],

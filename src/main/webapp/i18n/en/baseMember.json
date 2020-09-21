@@ -19,8 +19,8 @@
       "createdDate": "Created Date",
       "lastModifiedDate": "Last Modified Date",
       "role": "Role",
-      "base": "Base",
-      "member": "Member"
+      "member": "Member",
+      "base": "Base"
     }
   }
 }

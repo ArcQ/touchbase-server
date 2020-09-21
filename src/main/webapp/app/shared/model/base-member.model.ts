@@ -6,8 +6,8 @@ export interface IBaseMember {
   createdDate?: string;
   lastModifiedDate?: string;
   role?: Role;
-  baseId?: number;
   memberId?: number;
+  baseId?: number;
 }
 
 export const defaultValue: Readonly<IBaseMember> = {};

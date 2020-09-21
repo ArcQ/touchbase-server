@@ -7,10 +7,10 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IBase } from 'app/shared/model/base.model';
-import { getEntities as getBases } from 'app/entities/base/base.reducer';
 import { IUser } from 'app/shared/model/user.model';
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
+import { IBase } from 'app/shared/model/base.model';
+import { getEntities as getBases } from 'app/entities/base/base.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './base-member.reducer';
 import { IBaseMember } from 'app/shared/model/base-member.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -19,11 +19,11 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IBaseMemberUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
-  const [baseId, setBaseId] = useState('0');
   const [memberId, setMemberId] = useState('0');
+  const [baseId, setBaseId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { baseMemberEntity, bases, users, loading, updating } = props;
+  const { baseMemberEntity, users, bases, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/base-member');
@@ -36,8 +36,8 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
       props.getEntity(props.match.params.id);
     }
 
-    props.getBases();
     props.getUsers();
+    props.getBases();
   }, []);
 
   useEffect(() => {
@@ -129,13 +129,13 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
                 </AvInput>
               </AvGroup>
               <AvGroup>
-                <Label for="base-member-base">
-                  <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
+                <Label for="base-member-member">
+                  <Translate contentKey="touchbaseApp.baseMember.member">Member</Translate>
                 </Label>
-                <AvInput id="base-member-base" type="select" className="form-control" name="baseId">
+                <AvInput id="base-member-member" type="select" className="form-control" name="memberId">
                   <option value="" key="0" />
-                  {bases
-                    ? bases.map(otherEntity => (
+                  {users
+                    ? users.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
                           {otherEntity.id}
                         </option>
@@ -144,13 +144,13 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
                 </AvInput>
               </AvGroup>
               <AvGroup>
-                <Label for="base-member-member">
-                  <Translate contentKey="touchbaseApp.baseMember.member">Member</Translate>
+                <Label for="base-member-base">
+                  <Translate contentKey="touchbaseApp.baseMember.base">Base</Translate>
                 </Label>
-                <AvInput id="base-member-member" type="select" className="form-control" name="memberId">
+                <AvInput id="base-member-base" type="select" className="form-control" name="baseId">
                   <option value="" key="0" />
-                  {users
-                    ? users.map(otherEntity => (
+                  {bases
+                    ? bases.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
                           {otherEntity.id}
                         </option>
@@ -180,8 +180,8 @@ export const BaseMemberUpdate = (props: IBaseMemberUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  bases: storeState.base.entities,
   users: storeState.userManagement.users,
+  bases: storeState.base.entities,
   baseMemberEntity: storeState.baseMember.entity,
   loading: storeState.baseMember.loading,
   updating: storeState.baseMember.updating,
@@ -189,8 +189,8 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getBases,
   getUsers,
+  getBases,
   getEntity,
   updateEntity,
   createEntity,

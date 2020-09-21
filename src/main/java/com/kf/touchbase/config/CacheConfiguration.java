@@ -1,21 +1,17 @@
 package com.kf.touchbase.config;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Properties;
-
+import com.github.benmanes.caffeine.jcache.configuration.CaffeineConfiguration;
+import com.github.benmanes.caffeine.jcache.spi.CaffeineCachingProvider;
+import com.kf.touchbase.repository.UserRepository;
 import com.kf.touchbase.util.JHipsterProperties;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.annotation.Factory;
 
-import com.github.benmanes.caffeine.jcache.spi.CaffeineCachingProvider;
-import com.github.benmanes.caffeine.jcache.configuration.CaffeineConfiguration;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import org.hibernate.cache.jcache.ConfigSettings;
-
 import javax.cache.CacheManager;
 import javax.inject.Singleton;
+import java.util.OptionalLong;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 @Factory
 public class CacheConfiguration {
@@ -24,7 +20,7 @@ public class CacheConfiguration {
 
     public CacheConfiguration(JHipsterProperties jHipsterProperties) {
         JHipsterProperties.Cache.Caffeine caffeine = jHipsterProperties.getCache().getCaffeine();
-            
+
         CaffeineConfiguration<Object, Object> caffeineConfiguration = new CaffeineConfiguration<>();
         caffeineConfiguration.setMaximumSize(OptionalLong.of(caffeine.getMaxEntries()));
         caffeineConfiguration.setExpireAfterWrite(OptionalLong.of(TimeUnit.SECONDS.toNanos(caffeine.getTimeToLiveSeconds())));
@@ -43,6 +39,7 @@ public class CacheConfiguration {
     private void customizeCacheManager(CacheManager cm) {
         createCache(cm, com.kf.touchbase.repository.UserRepository.USERS_BY_LOGIN_CACHE);
         createCache(cm, com.kf.touchbase.repository.UserRepository.USERS_BY_EMAIL_CACHE);
+        createCache(cm, UserRepository.USERS_BY_AUTH_KEY_CACHE);
         createCache(cm, com.kf.touchbase.domain.User.class.getName());
         createCache(cm, com.kf.touchbase.domain.Authority.class.getName());
         createCache(cm, com.kf.touchbase.domain.User.class.getName() + ".authorities");

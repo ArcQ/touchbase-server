@@ -78,7 +78,7 @@ micronaut:
       - pattern: /api/**
         access: ROLE_ADMIN
       - pattern: /app/**
-        access: ROLE_ADMIN
+        access: ROLE_USER
       - pattern: /management/health
         access: isAnonymous()
       - pattern: /management/info
